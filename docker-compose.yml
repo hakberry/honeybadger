@@ -1,0 +1,18 @@
+app:
+ image: jaequery/honeybadger
+ links:
+ - db:honeybadger-postgres
+ command: /app/bin/docker/init.sh
+ environment:
+ - VIRTUAL_HOST=honeybadger.docker
+# restart: always
+ volumes:
+ - .:/app
+db:
+ image: postgres
+ environment:
+ - POSTGRES_PASSWORD=j
+ #volumes:
+ #- pgdata:/var/lib/postgresql/data 
+ tty: true
+# restart: always
